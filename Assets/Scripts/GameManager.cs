@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour {
     public Light gameLighting;
     private Color startColor;
     public Text timer;
-    public float timeRemaining = 180f;
+    public Text LoseText;
+    public float timeRemaining = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateTimer();
+        while (timeRemaining >= 0) { UpdateTimer(); }
         if (Input.GetMouseButtonDown(1))
         {
             hidden.SetActive(true);
@@ -42,5 +43,15 @@ public class GameManager : MonoBehaviour {
         if (seconds < 10) secondsText = "0" + seconds;
         timer.text = minutes + ":" + secondsText;
         timeRemaining -= Time.deltaTime;
+
+        if (timeRemaining < 0)
+        {
+            Lose();
+        }
+    }
+
+    public void Lose()
+    {
+        LoseText.GetComponent<Text>().enabled = true;   
     }
 }
