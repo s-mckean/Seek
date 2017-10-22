@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour {
     private Color startColor;
     public Text timer;
     public Text LoseText;
+    public Text WinText;
+    private bool won;
     public float timeRemaining = 10f;
+    public GameObject player;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +23,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        while (timeRemaining >= 0) { UpdateTimer(); }
+        if (timeRemaining >= 0 && !won) { UpdateTimer(); }
+        Win();
         if (Input.GetMouseButtonDown(1))
         {
             hidden.SetActive(true);
@@ -53,5 +57,14 @@ public class GameManager : MonoBehaviour {
     public void Lose()
     {
         LoseText.GetComponent<Text>().enabled = true;   
+    }
+
+    public void Win()
+    {
+        if (player.GetComponent<PlayerScript>().GetItemsCollected() == 0)
+        {
+            WinText.GetComponent<Text>().enabled = true;
+            won = true;
+        }
     }
 }

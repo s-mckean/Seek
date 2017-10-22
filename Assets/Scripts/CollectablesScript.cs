@@ -18,6 +18,7 @@ public class CollectablesScript : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<PlayerScript>().UpdateItemsCollected();
             Destroy(gameObject);
         }
     }
