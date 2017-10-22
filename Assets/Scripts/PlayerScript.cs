@@ -10,9 +10,8 @@ public class PlayerScript : MonoBehaviour {
     public Text itemsText;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         collectable = GameObject.FindGameObjectsWithTag("Collectable");
-        Debug.Log(collectable);
         foreach (GameObject collect in collectable)
         {
             itemsCollected++;
