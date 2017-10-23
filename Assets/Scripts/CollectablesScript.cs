@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CollectablesScript : MonoBehaviour {
 
+
 	// Use this for initialization
-	void Start () {
-		
-	}
+
 	
 	// Update is called once per frame
 	void Update () {
