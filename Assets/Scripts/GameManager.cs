@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour {
     public GameObject collectablePrefab;
     public GameObject hiddenParent;
     public Image meter;
-    public GameObject restartButton;
     public GameObject platformPrefab;
 
     private double perSecondDecrement;
@@ -40,7 +39,7 @@ public class GameManager : MonoBehaviour {
             Vector3 position = new Vector3(Random.Range(146, 306), 21f, Random.Range(85, 286));
             Instantiate(collectablePrefab, position, Quaternion.identity, hiddenParent.transform);
         }
-        StartCoroutine("UpdateHealthBar");
+        StartCoroutine(UpdateHealthBar());
     }
 
     // Use this for initialization
@@ -52,7 +51,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (timeRemaining >= 0 && !won && !lose) { UpdateTimer(); }
-        Win();
+        if (!lose) { Win(); }
         if (Input.GetMouseButtonDown(1) && canHide)
         {
             hiddenActive = true;
@@ -60,7 +59,7 @@ public class GameManager : MonoBehaviour {
             gameLighting.color = Color.black;
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) || !canHide)
         {
             hiddenActive = false;
             hidden.SetActive(false);
@@ -71,6 +70,11 @@ public class GameManager : MonoBehaviour {
         {
             SpawnPlatform();
             meterRectTransform.sizeDelta = new Vector2(meterRectTransform.rect.width - (float)flatDecrement, meterRectTransform.rect.height);
+        }
+
+        if (Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
         }
 	}
 
@@ -93,7 +97,7 @@ public class GameManager : MonoBehaviour {
     public void Lose()
     {
         LoseText.GetComponent<Text>().enabled = true;
-        restartButton.SetActive(true);
+        StartCoroutine(RestartGame());
         lose = true;
     }
 
@@ -102,7 +106,7 @@ public class GameManager : MonoBehaviour {
         if (player.GetComponent<PlayerScript>().GetItemsCollected() == 0)
         {
             WinText.GetComponent<Text>().enabled = true;
-            restartButton.SetActive(true);
+            StartCoroutine(RestartGame());
             won = true;
         }
     }
@@ -121,8 +125,9 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void RestartGame()
+    IEnumerator RestartGame()
     {
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
