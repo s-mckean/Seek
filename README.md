@@ -1,4 +1,4 @@
-#Seek
+# Seek
 
 Goal: Find all of the objects hidden in another dimension
 
