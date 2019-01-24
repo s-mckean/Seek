@@ -17,3 +17,7 @@ Press the ESC key to exit the game
 
 
 Make sure to conserve your energy
+
+# Demo
+
+![Image](https://user-images.githubusercontent.com/42820224/51708355-997cca00-1fd8-11e9-89e4-5dc1dd71e700.gif)
