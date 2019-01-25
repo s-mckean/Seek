@@ -2,19 +2,11 @@
 
 Goal: Find all of the objects hidden in another dimension
 
-
-
 Press the RIGHT MOUSE BUTTON to see into the other dimension
-
-
 
 Press the LEFT MOUSE BUTTON to spawn a platform
 
-
-
 Press the ESC key to exit the game
-
-
 
 Make sure to conserve your energy
 
@@ -25,3 +17,5 @@ Make sure to conserve your energy
 To download just the game or view the full demo video use this link:
 
 https://drive.google.com/drive/folders/1OiCPi49hI-onYprqd-TiX3vEKE3E33ED?usp=sharing
+
+Note: The entire "Game Download" folder must be downloaded in order to play
