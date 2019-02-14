@@ -1,4 +1,11 @@
 # Seek
+Author: Spencer McKean
+
+Code last modified on: 1/17/19
+
+GitHub Link: https://github.com/s-mckean/Seek/
+
+## Description
 
 Goal: Find all of the objects hidden in another dimension
 
